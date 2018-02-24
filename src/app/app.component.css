@@ -6,3 +6,11 @@ h1.brand {
   margin-top: 5px;
   color: #17a2b8;
 }
+
+.wasgeit-header {
+  display: inline-flex;
+}
+
+.wasgeit-header ul.nav {
+  padding: .8rem 0 0 .5rem;
+}

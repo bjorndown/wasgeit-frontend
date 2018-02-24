@@ -3,6 +3,10 @@ ul {
   padding-left: 0;
 }
 
+ul li {
+  margin-bottom: .1em;
+}
+
 h2.day {
   margin-top: .8em;
   color: #444444;

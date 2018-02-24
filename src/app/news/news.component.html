@@ -1,0 +1,11 @@
+<ul>
+  <li *ngFor="let day of days; let i = index">
+    <h2 class="day">{{ i == 0 ? 'Gestern' : 'Vor ' + (i + 1) + ' Tagen'}} gefunden</h2>
+    <ul>
+      <li *ngFor="let event of news[day]">
+        <span class="badge badge-info">{{formatDate(event.datetime)}}</span>
+        <a href="{{event.url}}">{{event.title}}</a> im <a href="{{event.venue.URL}}">{{event.venue.Name}}</a>
+      </li>
+    </ul>
+  </li>
+</ul>
