@@ -27,5 +27,20 @@ export class NewsComponent implements OnInit {
     this.sub.unsubscribe()
   }
 
+  buildTitle(isoDate: string): string {
+    let date = new Date(isoDate);
+    let today = new Date();
+    let diff = today.getDate() - date.getDate();
+
+    switch (diff) {
+      case 0:
+        return 'Heute gefunden';
+      case 1:
+        return 'Gestern gefunden';
+      default:
+        return `Vor ${diff} Tagen gefunden`;
+    }
+  }
+
   formatDate = formatDate
 }
