@@ -28,17 +28,19 @@ export class NewsComponent implements OnInit {
   }
 
   buildTitle(isoDate: string): string {
+    const MS_IN_A_DAY = 1000 * 60 * 60 * 24;
     let date = new Date(isoDate);
     let today = new Date();
-    let diff = today.getDate() - date.getDate();
+    let diffInMs = today.getTime() - date.getTime();
+    let diffInDays = Math.floor(diffInMs / MS_IN_A_DAY);
 
-    switch (diff) {
+    switch (diffInDays) {
       case 0:
         return 'Heute gefunden';
       case 1:
         return 'Gestern gefunden';
       default:
-        return `Vor ${diff} Tagen gefunden`;
+        return `Vor ${diffInDays} Tagen gefunden`;
     }
   }
 
