@@ -39,6 +39,8 @@ export class NewsComponent implements OnInit {
         return 'Heute gefunden';
       case 1:
         return 'Gestern gefunden';
+      case 2:
+        return 'Vorgestern gefunden';
       default:
         return `Vor ${diffInDays} Tagen gefunden`;
     }

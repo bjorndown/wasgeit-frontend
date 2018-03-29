@@ -11,3 +11,11 @@ h2.day {
   margin-top: .8em;
   color: #444444;
 }
+
+button.add-calendar-entry {
+  border: none;
+}
+
+button.add-calendar-entry:focus {
+  outline: none;
+}

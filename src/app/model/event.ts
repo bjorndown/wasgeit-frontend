@@ -1,7 +1,8 @@
 import { Venue } from "./venue";
 
 export class Event {
-    date: Date;
+    datetime: string;
     title: string;
+    url: string;
     venue: Venue;
 }

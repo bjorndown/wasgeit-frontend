@@ -3,6 +3,9 @@
     <h2 class="day">{{formatDate(day)}}</h2>
     <ul>
       <li *ngFor="let event of agenda[day]">
+        <button class="add-calendar-entry" (click)="createCalendarEntry(event)">
+          <img src="/assets/calendar.png" width="16px" height="16px">
+        </button>
         <a href="{{event.venue.URL}}" class="badge badge-info">{{event.venue.Name}}</a>
         <a href="{{event.url}}">{{event.title}}</a>
       </li>
