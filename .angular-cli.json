@@ -3,6 +3,7 @@
   "project": {
     "name": "wasgeit-frontend"
   },
+  "packageManager": "yarn",
   "apps": [
     {
       "root": "src",
