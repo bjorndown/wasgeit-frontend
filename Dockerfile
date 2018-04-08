@@ -11,5 +11,3 @@ FROM nginx
 COPY --from=build /wasgeit-frontend/dist/ /usr/share/nginx/html
 
 COPY wasgeit-nginx.conf /etc/nginx/conf.d/default.conf
-
-USER nginx
