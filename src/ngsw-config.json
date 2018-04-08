@@ -26,7 +26,7 @@
   }],
   "dataGroups": [{
     "name": "api",
-    "urls": ["/rest/agenda"],
+    "urls": ["/rest/agenda", "/rest/news"],
     "version": 1,
     "cacheConfig": {
       "maxSize": 10,
