@@ -25,6 +25,7 @@ module.exports = {
         ]
     },
     devServer: {
+        port: 9000,
         contentBase: path.join(__dirname, "dist"),
         proxy: {
             "/rest": {

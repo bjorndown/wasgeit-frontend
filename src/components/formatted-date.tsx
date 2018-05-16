@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {formatDate} from '../formatted-date'
+import {formatDate} from '../shared/formatted-date'
 
 export interface FormattedDateProps {
     isoDateString: string

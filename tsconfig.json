@@ -4,7 +4,7 @@
     "sourceMap": true,
     "noImplicitAny": true,
     "module": "commonjs",
-    "target": "es5",
+    "target": "es6",
     "jsx": "react"
   },
   "lib": [
@@ -13,6 +13,7 @@
   ],
   "include": [
     "./src/**/*",
-    "node_modules/typescript/lib/lib.es2015.collection.d.ts"
+    "node_modules/@types/**/*",
+    "node_modules/typescript/lib/lib.es2017.collection.d.ts"
   ]
 }

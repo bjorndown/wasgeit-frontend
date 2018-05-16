@@ -1,2 +1,2 @@
 import {Event} from './event'
-export type Agenda = Map<string, Event[]>
+export type Agenda = { [prop: string]: Event[]}
