@@ -6,7 +6,6 @@ import {FormattedDate} from "./formatted-date";
 import {Subscription} from "rxjs";
 
 interface EventListState {
-    agenda$: Observable<Agenda>
     agenda: Agenda
     days: string[]
     sub: Subscription
@@ -20,7 +19,8 @@ const EventComponent = ({event}: { event: Event }) => {
     return (
         <li>
             <a href={event.venue.URL}
-               className={'badge badge-info'}>{event.venue.Name}</a>
+               className={'venue-badge'}>{event.venue.Name}</a>
+            &nbsp;
             <a href={event.url}>{event.title}</a>
         </li>
     )
@@ -29,7 +29,7 @@ const EventComponent = ({event}: { event: Event }) => {
 const DayComponent = ({day, events}: { day: string, events: Event[] }) => {
     return (
         <li>
-            <FormattedDate isoDateString={day}/>
+            <h3><FormattedDate isoDateString={day}/></h3>
             <ul>
                 {events.map((event: Event) => <EventComponent key={event.url} event={event}/>)}
             </ul>
@@ -40,17 +40,16 @@ const DayComponent = ({day, events}: { day: string, events: Event[] }) => {
 export class EventList extends React.Component<EventListProps, EventListState> {
     constructor(props: EventListProps) {
         super(props)
-        this.state = {agenda$: props.agenda$, agenda: {}, days: [], sub: null}
+        this.state = {agenda: {}, days: [], sub: null}
     }
 
     componentDidMount() {
-        let sub = this.state.agenda$.subscribe((agenda: Agenda) => {
+        let sub = this.props.agenda$.subscribe((agenda: Agenda) => {
             this.setState({agenda, days: Object.keys(agenda), sub})
         })
     }
 
     componentWillUnmount() {
-        console.log(this.state)
         this.state.sub.unsubscribe()
         this.setState({sub: null})
     }

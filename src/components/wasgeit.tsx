@@ -7,17 +7,21 @@ export const WasGeit = () => {
     return (
         <Router>
             <div>
-                <h1>wasgeit</h1>
-                <ul>
-                    <li>
-                        <Link to="/">Agenda</Link>
-                    </li>
-                    <li>
-                        <Link to="/news">News</Link>
-                    </li>
-                </ul>
-                <Route exact path="/" component={AgendaContainer}/>
-                <Route exact path="/news" component={NewsComponent}/>
+                <div className={'header'}>
+                    <h1>was<span>geit</span></h1>
+                    <ul role={'navigation'}>
+                        <li>
+                            <Link to="/">Agenda</Link>
+                        </li>
+                        <li>
+                            <Link to="/news">News</Link>
+                        </li>
+                    </ul>
+                </div>
+                <div className={'content'}>
+                    <Route exact path="/" component={AgendaContainer}/>
+                    <Route exact path="/news" component={NewsComponent}/>
+                </div>
             </div>
         </Router>
     )

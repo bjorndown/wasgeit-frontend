@@ -21,7 +21,14 @@ module.exports = {
     module: {
         rules: [
             {test: /\.tsx?$/, loader: "awesome-typescript-loader"},
-            {enforce: "pre", test: /\.js$/, loader: "source-map-loader"}
+            {enforce: "pre", test: /\.js$/, loader: "source-map-loader"},
+            {
+                test: /\.less$/, use: [
+                    {loader: 'style-loader'},
+                    {loader: 'css-loader'},
+                    {loader: 'less-loader'}
+                ]
+            }
         ]
     },
     devServer: {
@@ -39,6 +46,6 @@ module.exports = {
         }
     },
     plugins: [
-        new CopyWebpackPlugin([{ from: 'src/index.html', dest: 'dist' }])
+        new CopyWebpackPlugin([{from: 'src/index.html', dest: 'dist'}])
     ]
 };

@@ -1,3 +1,3 @@
 import {Event} from './event'
 
-export type News = Map<string, Event[]>
+export type News = { [prop: string]: Event[]}

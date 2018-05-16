@@ -9,7 +9,7 @@ export const AgendaContainer = () => {
     let agenda$: Observable<Agenda> = ajax('/rest/agenda').pipe(pluck('response'))
     return (
         <div>
-            <h2>Agenda</h2>
+            <h2 className={'hidden'}>Agenda</h2>
             <AgendaFilter agenda$={agenda$}/>
         </div>
     )
