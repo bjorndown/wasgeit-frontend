@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BrowserRouter as Router, Route, Link} from "react-router-dom";
+import {BrowserRouter as Router, Route, Link, Redirect, Switch} from "react-router-dom";
 import {AgendaContainer} from "./agenda";
 import {NewsComponent} from "./news";
 
@@ -11,7 +11,7 @@ export const WasGeit = () => {
                     <h1>was<span>geit</span></h1>
                     <ul role={'navigation'}>
                         <li>
-                            <Link to="/">Agenda</Link>
+                            <Link to="/agenda">Agenda</Link>
                         </li>
                         <li>
                             <Link to="/news">News</Link>
@@ -19,8 +19,11 @@ export const WasGeit = () => {
                     </ul>
                 </div>
                 <div className={'content'}>
-                    <Route exact path="/" component={AgendaContainer}/>
-                    <Route exact path="/news" component={NewsComponent}/>
+                    <Switch>
+                        <Route exact path="/agenda" component={AgendaContainer}/>
+                        <Route exact path="/news" component={NewsComponent}/>
+                        <Redirect exact from="/" to="/agenda"/>
+                    </Switch>
                 </div>
             </div>
         </Router>
