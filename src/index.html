@@ -41,11 +41,12 @@
         h1, h2, h3, h4 {
             font-family: inherit;
             font-weight: 500;
-            line-height: 1.2
+            line-height: 1.2;
+            margin-bottom: .3em;
         }
 
-        h2 {
-            font-size: 2rem;
+        h3 {
+            font-size: 1.7em;
         }
 
         .header span {
@@ -70,7 +71,7 @@
         }
 
         .content li {
-            /*margin-bottom: .5em;*/
+            margin-bottom: .2em;
         }
 
         .venue-badge {
@@ -86,15 +87,34 @@
             vertical-align: baseline;
             border-radius: .25rem;
         }
+
+        input {
+            width: 100%;
+            max-width: 500px;
+            padding: .375rem .75rem;
+            border-radius: .25rem;
+            border: 1px solid #CCC;
+            font-family: inherit;
+            font-size: inherit;
+        }
+
+        /*
+            Use box-model, otherwise 'width: 100%' is wider than viewport.
+            https://stackoverflow.com/questions/19958666/div-with-width-100-style-actually-wider-than-page#19958717
+        */
+        *, *:before, *:after {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+        }
     </style>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <base href="/">
     <meta charset="utf-8">
 </head>
 <body>
-<div id="wasgeit" class="container"></div>
+<div id="wasgeit"></div>
 
-<!-- Main -->
 <script src="./vendor.bundle.js"></script>
 <script src="./app.bundle.js"></script>
 </body>

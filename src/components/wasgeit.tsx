@@ -6,7 +6,7 @@ import {NewsComponent} from "./news";
 export const WasGeit = () => {
     return (
         <Router>
-            <div>
+            <div className={'container'}>
                 <div className={'header'}>
                     <h1>was<span>geit</span></h1>
                     <ul role={'navigation'}>
