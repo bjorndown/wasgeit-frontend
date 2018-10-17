@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AgendaService } from '../agenda.service';
 import { Agenda } from '../model/agenda';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { formatDate } from "../date";
 

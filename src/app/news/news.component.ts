@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Subscription} from "rxjs/Subscription";
+import {Subscription} from "rxjs";
 import {formatDate} from "../date";
 import {News} from "../model/news";
 import {NewsService} from "../news.service";
