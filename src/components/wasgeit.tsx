@@ -1,5 +1,5 @@
 import * as React from "react";
-import {BrowserRouter as Router, Route, Link, Redirect, Switch} from "react-router-dom";
+import {HashRouter as Router, Route, Link, Redirect, Switch} from "react-router-dom";
 import {AgendaContainer} from "./agenda";
 import {NewsComponent} from "./news";
 
