@@ -1,6 +1,10 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
+const webpack = require('webpack')
+const {execSync} = require('child_process')
+
+const currentCommit = execSync('git rev-list --max-count=1 HEAD').toString().trim()
 
 module.exports = {
     entry: {
@@ -34,7 +38,6 @@ module.exports = {
     },
     devServer: {
         port: 9000,
-        historyApiFallback: true,
         contentBase: path.join(__dirname, "dist"),
         proxy: {
             "/rest": {
@@ -55,6 +58,10 @@ module.exports = {
             {from: 'src/favicon.ico'},
             {from: 'src/assets', to: 'assets/'}
         ]),
-        new CleanWebpackPlugin(['dist'])
+        new CleanWebpackPlugin(['dist']),
+        new webpack.DefinePlugin({
+            WASGEIT_BUILD_COMMIT: JSON.stringify(currentCommit),
+            WASGEIT_BUILD_TIME: JSON.stringify(new Date())
+        })
     ]
 };
