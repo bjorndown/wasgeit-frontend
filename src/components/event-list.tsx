@@ -8,7 +8,7 @@ import {Subscription} from "rxjs";
 interface EventListState {
     agenda: Agenda
     days: string[]
-    sub: Subscription
+    sub: Subscription | null
 }
 
 interface EventListProps {
@@ -50,7 +50,9 @@ export class EventList extends React.Component<EventListProps, EventListState> {
     }
 
     componentWillUnmount() {
-        this.state.sub.unsubscribe()
+        if (this.state.sub) {
+            this.state.sub.unsubscribe()
+        }
         this.setState({sub: null})
     }
 

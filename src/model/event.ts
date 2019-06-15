@@ -1,12 +1,8 @@
 import { Venue } from "./venue";
 
-export class Event {
-    date: Date
-    title: string
-    venue: Venue
-    url: string
-
-    constructor(title: string) {
-        this.title = title;
-    }
+export interface Event {
+    readonly date: string
+    readonly title: string
+    readonly venue: Venue
+    readonly url: string
 }

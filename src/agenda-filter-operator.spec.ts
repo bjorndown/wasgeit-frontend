@@ -2,6 +2,7 @@ import {Agenda} from "./model/agenda";
 import {Event} from "./model/event";
 import {agendaSearch} from "./agenda-filter-operator";
 import {expect} from "chai";
+import {Venue} from "./model/venue";
 
 let jan1 = '1. Jan.';
 let feb2 = '2. Feb.';
@@ -10,12 +11,25 @@ let mar1 = '1. März';
 let mar12 = '12. März';
 let agenda: Agenda = {};
 
+class TestEvent implements Event {
+    readonly date: string = '';
+    readonly title: string = '';
+    readonly url: string = '';
+    // @ts-ignore
+    readonly venue: Venue;
+    constructor(title: string) {
+        this.title = title;
 
-agenda[jan1] = [ new Event('Event Foo'), new Event('Event Foo 2') ];
-agenda[feb2] = [ new Event('Event Bar') ];
-agenda[feb5] = [ new Event('Event Foo 2') ];
-agenda[mar1] = [ new Event('Event Baz') ];
-agenda[mar12] = [ new Event('Event Whoo') ];
+    }
+}
+
+
+
+agenda[jan1] = [ new TestEvent('Event Foo'), new TestEvent('Event Foo 2') ];
+agenda[feb2] = [ new TestEvent('Event Bar') ];
+agenda[feb5] = [ new TestEvent('Event Foo 2') ];
+agenda[mar1] = [ new TestEvent('Event Baz') ];
+agenda[mar12] = [ new TestEvent('Event Whoo') ];
 
 describe('agendaSearchOperator', () => {
 

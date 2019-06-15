@@ -1,4 +1,4 @@
-export class Venue {
-    Name: string
-    URL: string
+export interface Venue {
+    readonly Name: string
+    readonly URL: string
 }

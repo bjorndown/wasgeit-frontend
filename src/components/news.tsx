@@ -60,7 +60,7 @@ function buildTitle(isoDate: string): string {
 interface NewsListState {
     news: News
     days: string[]
-    sub: Subscription
+    sub: Subscription | null
 }
 
 interface NewsListProps {
@@ -81,7 +81,9 @@ export class NewsList extends React.Component<NewsListProps, NewsListState> {
     }
 
     componentWillUnmount() {
-        this.state.sub.unsubscribe()
+        if (this.state.sub) {
+            this.state.sub.unsubscribe()
+        }
         this.setState({sub: null})
     }
 

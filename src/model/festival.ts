@@ -1,5 +1,5 @@
-export class Festival {
-    title: string
-    from: Date
-    to: Date
+export interface Festival {
+    readonly title: string
+    readonly from: string
+    readonly to: string
 }

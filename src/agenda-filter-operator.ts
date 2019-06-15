@@ -17,7 +17,7 @@ export function agendaSearchOperator(): OperatorFunction<[Agenda, string], Agend
     }
 }
 
-export function agendaSearch(agenda: Agenda, searchStr: string): Agenda {
+export function agendaSearch(agenda: Agenda, searchStr: string | null | undefined): Agenda {
     if (searchStr === '' || searchStr === undefined || searchStr === null) {
         return agenda;
     }
