@@ -1,4 +1,4 @@
-FROM kkarczmarczyk/node-yarn AS build
+FROM node:lts-jessie AS build
 
 WORKDIR /wasgeit-frontend
 
