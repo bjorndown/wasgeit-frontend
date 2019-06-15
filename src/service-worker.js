@@ -1,54 +1,68 @@
-// Courtesy of https://serviceworke.rs/strategy-cache-and-update_demo.html
-
-let CACHE_NAME = 'wasgeit-cache-v1';
+const CACHE_NAME = 'wasgeit-cache';
 let urlsToCache = [
+    '/vendor.bundle.js',
+    '/app.bundle.js',
     '/rest/agenda',
     '/rest/news',
+    '/manifest.json',
+    '/assets/apple-touch-icon.png',
+    '/assets/apple-touch-icon-120x120.png',
+    '/assets/icon-48.png',
+    '/assets/icon-96.png',
+    '/assets/icon-144.png',
+    '/assets/icon-192.png'
 ];
 
 self.addEventListener('install', function(evt) {
-    console.log('The service worker is being installed.');
-
-    // Ask the service worker to keep installing until the returning promise
-    // resolves.
+    console.debug('The service worker is being installed.');
     evt.waitUntil(precache());
+    return self.skipWaiting();
 });
 
-self.addEventListener('fetch', function(evt) {
-    console.log('The service worker is serving the asset.');
-    // You can use `respondWith()` to answer immediately, without waiting for the
-    // network response to reach the service worker...
-    evt.respondWith(fromCache(evt.request));
-    // ...and `waitUntil()` to prevent the worker from being killed until the
-    // cache is updated.
-    evt.waitUntil(update(evt.request));
+self.addEventListener('activate', function() {
+    return self.clients.claim();
 });
 
-// Open a cache and use `addAll()` with an array of assets to add all of them
-// to the cache. Return a promise resolving when all the assets are added.
-function precache() {
-    return caches.open(CACHE_NAME).then(function (cache) {
-        return cache.addAll(urlsToCache);
-    });
+function shouldBeCached(url) {
+    return urlsToCache.some(pathToCache => url.endsWith(pathToCache));
 }
 
-// Open the cache where the assets were stored and search for the requested
-// resource. Notice that in case of no matching, the promise still resolves
-// but it does with `undefined` as value.
-function fromCache(request) {
-    return caches.open(CACHE_NAME).then(function (cache) {
-        return cache.match(request).then(function (matching) {
-            return matching || Promise.reject('no-match');
+self.addEventListener('fetch', function(evt) {
+    if (shouldBeCached(evt.request.url)) {
+        console.debug('serving from cache: ' + evt.request.url);
+        evt.respondWith(fromCache(evt.request));
+        console.debug('updating cacheable request: ' + evt.request.url);
+        evt.waitUntil(update(evt.request));
+    } else {
+        console.debug('fetching not-to-cache request: ' + evt.request.url);
+        evt.waitUntil(fetch(evt.request))
+    }
+});
+
+function precache() {
+    return caches.delete(CACHE_NAME).then(function() {
+        caches.open(CACHE_NAME).then(function (cache) {
+            return cache.addAll(urlsToCache);
         });
     });
 }
 
-// Update consists in opening the cache, performing a network request and
-// storing the new response data.
+function fromCache(request) {
+    return caches.open(CACHE_NAME).then(function (cache) {
+        return cache.match(request.url).then(function (matching) {
+            if (!matching) {
+                console.debug(request.url + ' not cached yet.')
+                return Promise.reject('cache-miss')
+            }
+            return matching
+        });
+    });
+
+}
 function update(request) {
     return caches.open(CACHE_NAME).then(function (cache) {
         return fetch(request).then(function (response) {
-            return cache.put(request, response);
+            return cache.put(request.url, response.clone());
         });
     });
 }
