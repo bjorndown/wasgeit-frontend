@@ -75,7 +75,8 @@ export class NewsList extends React.Component<NewsListProps, NewsListState> {
 
     componentDidMount() {
         let sub = this.props.news$.subscribe((news: News) => {
-            this.setState({news, days: Object.keys(news), sub})
+            let days = Object.keys(news).sort().reverse()
+            this.setState({news, days, sub})
         })
     }
 
