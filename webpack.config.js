@@ -1,6 +1,6 @@
 const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const CleanWebpackPlugin = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 const webpack = require('webpack')
 const {execSync} = require('child_process')
 
@@ -58,7 +58,7 @@ module.exports = {
             {from: 'src/favicon.ico'},
             {from: 'src/assets', to: 'assets/'}
         ]),
-        new CleanWebpackPlugin(['dist']),
+        new CleanWebpackPlugin(),
         new webpack.DefinePlugin({
             WASGEIT_BUILD_COMMIT: JSON.stringify(currentCommit),
             WASGEIT_BUILD_TIME: JSON.stringify(new Date())

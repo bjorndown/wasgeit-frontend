@@ -12,8 +12,6 @@
     "dom"
   ],
   "include": [
-    "./src/**/*",
-    "node_modules/@types/**/*",
-    "node_modules/typescript/lib/lib.es2017.collection.d.ts"
+    "./src/**/*"
   ]
 }
