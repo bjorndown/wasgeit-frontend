@@ -6,6 +6,19 @@ const {execSync} = require('child_process')
 
 const currentCommit = execSync('git rev-list --max-count=1 HEAD').toString().trim()
 
+const VERSION = {
+    WASGEIT_BUILD_COMMIT: currentCommit,
+    WASGEIT_BUILD_TIME: new Date()
+}
+
+function stringifyValues(object) {
+    let objectCopy = {}
+    for (key of Object.keys(object)) {
+        objectCopy[key] = JSON.stringify(object[key])
+    }
+    return objectCopy
+}
+
 module.exports = {
     entry: "./src/index.tsx",
     mode: "development",
@@ -53,13 +66,17 @@ module.exports = {
             {from: 'src/service-worker.js'},
             {from: 'src/manifest.json'},
             {from: 'src/favicon.ico'},
-            {from: 'src/assets', to: 'assets/'}
+            {from: 'src/assets', to: 'assets/'},
+            {
+                from: 'src/version.json', transform: function (buffer) {
+                    const versionTemplate = JSON.parse(buffer.toString())
+                    Object.assign(versionTemplate, VERSION)
+                    return JSON.stringify(versionTemplate)
+                }
+            }
         ]),
         new CleanWebpackPlugin(),
-        new webpack.DefinePlugin({
-            WASGEIT_BUILD_COMMIT: JSON.stringify(currentCommit),
-            WASGEIT_BUILD_TIME: JSON.stringify(new Date())
-        })
+        new webpack.DefinePlugin(stringifyValues(VERSION))
     ],
     optimization: {
         runtimeChunk: 'single',

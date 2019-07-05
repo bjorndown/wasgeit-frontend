@@ -1,35 +1,81 @@
 import * as React from "react";
-import {HashRouter as Router, Route, Link, Redirect, Switch} from "react-router-dom";
+import {HashRouter as Router, Link, Redirect, Route, Switch} from "react-router-dom";
 import {AgendaContainer} from "./agenda";
 import {NewsComponent} from "./news";
 import {buildInfo} from "../shared/build-info";
 
-export const WasGeit = () => {
-    return (
-        <Router>
-            <div className={'container'}>
-                <div className={'header'}>
-                    <h1>was<span>geit</span></h1>
-                    <ul role={'navigation'}>
-                        <li>
-                            <Link to="/agenda">Agenda</Link>
-                        </li>
-                        <li>
-                            <Link to="/news">News</Link>
-                        </li>
-                    </ul>
+function getRemoteCommitHash(): Promise<string> {
+    return fetch('/version.json')
+        .then(response => response.json())
+        .then(response => response.WASGEIT_BUILD_COMMIT)
+        .then(commit => {
+            console.debug(`Got commit hash ${commit} from remote`)
+            return commit
+        })
+}
+
+function checkIfReloadBannerShouldBeShown(): Promise<boolean> {
+    console.debug(`Local commit hash: ${buildInfo.commit}`)
+    const commitFromRemote = getRemoteCommitHash()
+    const isIosDevice = window.navigator.userAgent.search('iPhone OS') != -1
+    console.debug(`Is iOS device: ${isIosDevice}`)
+    return commitFromRemote.then(remoteCommit => isIosDevice && remoteCommit !== buildInfo.commit)
+}
+
+function forceReload() {
+    location.reload(true)
+}
+
+interface Props {
+}
+
+interface State {
+    showForceReloadButton: boolean
+}
+
+export class WasGeit extends React.Component<Props, State> {
+    constructor(props: Props) {
+        super(props)
+        this.state = {showForceReloadButton: true}
+        checkIfReloadBannerShouldBeShown()
+            .then(showForceReloadButton => {
+                console.debug(`Will show force reload banner: ${showForceReloadButton}`)
+                return showForceReloadButton
+            })
+            .then(showForceReloadButton => this.setState({showForceReloadButton}))
+    }
+
+    render() {
+        const url = `https://github.com/bjorm/wasgeit-frontend/commit/${buildInfo.commit}`
+        return (
+            <Router>
+                <div className={'container'}>
+                    <div className={'header'}>
+                        <h1>was<span>geit</span></h1>
+                        <ul role={'navigation'}>
+                            <li>
+                                <Link to="/agenda">Agenda</Link>
+                            </li>
+                            <li>
+                                <Link to="/news">News</Link>
+                            </li>
+                        </ul>
+                        <p className={'force-reload-banner'} hidden={!this.state.showForceReloadButton}>
+                            <a onClick={forceReload}>Deine Version von wasgeit ist veraltet. Tipp hier um sie zu
+                                aktualisieren.</a>
+                        </p>
+                    </div>
+                    <div className={'content'}>
+                        <Switch>
+                            <Route exact path="/agenda" component={AgendaContainer}/>
+                            <Route exact path="/news" component={NewsComponent}/>
+                            <Redirect exact from="/" to="/agenda"/>
+                        </Switch>
+                    </div>
+                    <small>Built at {buildInfo.time} from <a href={url}>{buildInfo.commit}</a>
+                    </small>
                 </div>
-                <div className={'content'}>
-                    <Switch>
-                        <Route exact path="/agenda" component={AgendaContainer}/>
-                        <Route exact path="/news" component={NewsComponent}/>
-                        <Redirect exact from="/" to="/agenda"/>
-                    </Switch>
-                </div>
-                <small>Built at {buildInfo.time} from
-                    <a href={'https://github.com/bjorm/wasgeit-frontend/commit/' + buildInfo.commit}>{buildInfo.commit}</a>
-                </small>
-            </div>
-        </Router>
-    )
+            </Router>
+        )
+    }
 }
