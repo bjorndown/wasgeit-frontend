@@ -1,7 +1,8 @@
 const CACHE_NAME = 'wasgeit-cache';
 let urlsToCache = [
-    '/vendor.bundle.js',
-    '/app.bundle.js',
+    '/vendors.bundle.js',
+    '/runtime.bundle.js',
+    '/main.bundle.js',
     '/rest/agenda',
     '/rest/news',
     '/manifest.json',

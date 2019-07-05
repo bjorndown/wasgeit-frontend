@@ -7,10 +7,7 @@ const {execSync} = require('child_process')
 const currentCommit = execSync('git rev-list --max-count=1 HEAD').toString().trim()
 
 module.exports = {
-    entry: {
-        app: "./src/index.tsx",
-        vendor: "./src/vendor.ts"
-    },
+    entry: "./src/index.tsx",
     mode: "development",
     output: {
         filename: "[name].bundle.js",
@@ -63,5 +60,17 @@ module.exports = {
             WASGEIT_BUILD_COMMIT: JSON.stringify(currentCommit),
             WASGEIT_BUILD_TIME: JSON.stringify(new Date())
         })
-    ]
+    ],
+    optimization: {
+        runtimeChunk: 'single',
+        splitChunks: {
+            cacheGroups: {
+                vendor: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    chunks: 'all'
+                }
+            }
+        }
+    }
 };
