@@ -2,3 +2,6 @@ yarn-error.log
 dist/
 node_modules/
 .idea/
+src/**/*.jsx
+src/**/*.js
+!src/service-worker.js
