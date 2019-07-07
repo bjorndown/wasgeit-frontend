@@ -36,7 +36,7 @@ interface State {
 export class WasGeit extends React.Component<Props, State> {
     constructor(props: Props) {
         super(props)
-        this.state = {showForceReloadButton: true}
+        this.state = {showForceReloadButton: false}
         checkIfReloadBannerShouldBeShown()
             .then(showForceReloadButton => {
                 console.debug(`Will show force reload banner: ${showForceReloadButton}`)
@@ -60,7 +60,7 @@ export class WasGeit extends React.Component<Props, State> {
                                 <Link to="/news">News</Link>
                             </li>
                         </ul>
-                        <p className={'force-reload-banner'} hidden={!this.state.showForceReloadButton}>
+                        <p className={'force-reload-banner'} hidden={this.isForceReloadBannerHidden()}>
                             <a onClick={forceReload}>Deine Version von wasgeit ist veraltet. Tipp hier um sie zu
                                 aktualisieren.</a>
                         </p>
@@ -77,5 +77,9 @@ export class WasGeit extends React.Component<Props, State> {
                 </div>
             </Router>
         )
+    }
+
+    private isForceReloadBannerHidden() {
+        return !this.state.showForceReloadButton
     }
 }
