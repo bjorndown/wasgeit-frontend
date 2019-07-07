@@ -72,7 +72,7 @@ export class WasGeit extends React.Component<Props, State> {
                             <Redirect exact from="/" to="/agenda"/>
                         </Switch>
                     </div>
-                    <small>Built at {buildInfo.time} from <a href={url}>{buildInfo.commit}</a>
+                    <small>Built from <a href={url}>{buildInfo.commit.slice(0, 8)} at {buildInfo.time}</a>
                     </small>
                 </div>
             </Router>
