@@ -1,8 +1,6 @@
-import {Agenda} from '@/model/agenda'
-import {Event} from '@/model/event'
+import {Agenda, Event, Venue} from '@/model'
 import {agendaSearch} from '@/agenda-filter-operator'
 import {expect} from 'chai'
-import {Venue} from '@/model/venue'
 
 const jan1 = '1. Jan.';
 const feb2 = '2. Feb.';
