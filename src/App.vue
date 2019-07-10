@@ -21,14 +21,14 @@
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator';
+    import {Component, Prop, Vue} from 'vue-property-decorator'
     import {buildInfo} from './shared/build-info'
 
     @Component({
         components: {}
     })
     export default class App extends Vue {
-        public showForceReloadButton: boolean = false;
+        public showForceReloadButton: boolean = false
 
         public commit() {
             return buildInfo.commit.slice(0, 8)
@@ -39,7 +39,7 @@
         }
 
         public url() {
-            return  `https://github.com/bjorm/wasgeit-frontend/commit/${buildInfo.commit}`
+            return `https://github.com/bjorm/wasgeit-frontend/commit/${buildInfo.commit}`
         }
 
         public forceReload(): void {
@@ -47,7 +47,35 @@
         }
 
         public isForceReloadBannerHidden(): boolean {
-            return !this.showForceReloadButton;
+            return !this.showForceReloadButton
         }
+
+        public mounted() {
+            this.checkIfReloadBannerShouldBeShown()
+                .then((showForceReloadButton: boolean) => {
+                    console.debug(`Will show force reload banner: ${showForceReloadButton}`)
+                    return showForceReloadButton
+                })
+                .then((showForceReloadButton: boolean) => this.showForceReloadButton = showForceReloadButton)
+        }
+
+        public getRemoteCommitHash(): Promise<string> {
+            return fetch('/version.json')
+                .then((response) => response.json())
+                .then((response) => response.WASGEIT_BUILD_COMMIT)
+                .then((commit) => {
+                    console.debug(`Got commit hash ${commit} from remote`)
+                    return commit
+                })
+        }
+
+        public checkIfReloadBannerShouldBeShown(): Promise<boolean> {
+            console.debug(`Local commit hash: ${buildInfo.commit}`)
+            const commitFromRemote = this.getRemoteCommitHash()
+            const isIosDevice = window.navigator.userAgent.search('iPhone OS') !== -1
+            console.debug(`Is iOS device: ${isIosDevice}`)
+            return commitFromRemote.then((remoteCommit: string) => isIosDevice && remoteCommit !== buildInfo.commit)
+        }
+
     }
 </script>
