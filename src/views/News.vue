@@ -37,12 +37,12 @@
       })
     }
 
-    buildTitle(isoDate: string): string {
+    public buildTitle(isoDate: string): string {
       const MS_IN_A_DAY = 1000 * 60 * 60 * 24
-      let date = new Date(isoDate)
-      let today = new Date()
-      let diffInMs = today.getTime() - date.getTime()
-      let diffInDays = Math.floor(diffInMs / MS_IN_A_DAY)
+      const date = new Date(isoDate)
+      const today = new Date()
+      const diffInMs = today.getTime() - date.getTime()
+      const diffInDays = Math.floor(diffInMs / MS_IN_A_DAY)
 
       switch (diffInDays) {
         case 0:

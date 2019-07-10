@@ -1,4 +1,4 @@
-import { Venue } from "./venue";
+import {Venue} from './venue'
 
 export interface Event {
     readonly date: string

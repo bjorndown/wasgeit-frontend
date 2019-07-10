@@ -4,12 +4,12 @@ import {agendaSearch} from '@/agenda-filter-operator'
 import {expect} from 'chai'
 import {Venue} from '@/model/venue'
 
-let jan1 = '1. Jan.';
-let feb2 = '2. Feb.';
-let feb5 = '5. Feb.';
-let mar1 = '1. März';
-let mar12 = '12. März';
-let agenda: Agenda = {};
+const jan1 = '1. Jan.';
+const feb2 = '2. Feb.';
+const feb5 = '5. Feb.';
+const mar1 = '1. März';
+const mar12 = '12. März';
+const agenda: Agenda = {};
 
 class TestEvent implements Event {
     public readonly date: string = '';

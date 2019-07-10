@@ -2,7 +2,7 @@
     <div id="app" class="container">
         <div class="header">
             <h1>was<span>geit</span></h1>
-            <ul id="nav" role="menu">
+            <ul role="menu">
                 <li>
                     <router-link to="/agenda">Agenda</router-link>
                 </li>

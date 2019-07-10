@@ -3,7 +3,7 @@
         <input type='text' v-model="searchStr"/>
         <ul>
             <li v-for="day in Object.keys(filteredAgenda()).sort()">
-                <h3>{{ day}}</h3>
+                <h3>{{ formatDate(day) }}</h3>
                 <ul>
                     <li v-for="ev in filteredAgenda()[day]">
                         <a v-bind:href="ev.venue.URL" class="venue-badge">{{ ev.venue.Name }}</a>
@@ -31,7 +31,7 @@
             return agendaSearch(this.agenda, this.searchStr)
         }
 
-        public format(day: string): string {
+        public formatDate(day: string): string {
             return formatDate(day)
         }
 

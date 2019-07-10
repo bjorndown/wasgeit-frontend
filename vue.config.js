@@ -18,6 +18,9 @@ function stringifyValues(object) {
 }
 
 module.exports = {
+    pwa: {
+        navigateFallback: '/index.html'
+    },
     configureWebpack: {
         devServer: {
             historyApiFallback: true,
