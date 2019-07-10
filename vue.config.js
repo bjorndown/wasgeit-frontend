@@ -19,7 +19,11 @@ function stringifyValues(object) {
 
 module.exports = {
     pwa: {
-        navigateFallback: '/index.html'
+        name: 'wasgeit',
+        theme_color: '#17a2b8',
+        workboxOptions: {
+            navigateFallback: '/index.html'
+        }
     },
     configureWebpack: {
         devServer: {
