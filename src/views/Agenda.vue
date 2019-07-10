@@ -14,10 +14,10 @@
         </ul>
         <ul class="pager">
             <li v-if="hasPreviousPage()">
-                <router-link v-bind:to="previousPage()">zrügg</router-link>
+                <router-link class="button" v-bind:to="previousPage()">zrügg</router-link>
             </li>
             <li v-if="hasNextPage()">
-                <router-link v-bind:to="nextPage()">füre</router-link>
+                <router-link class="button" v-bind:to="nextPage()">füre</router-link>
             </li>
         </ul>
     </div>

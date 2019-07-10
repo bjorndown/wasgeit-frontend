@@ -4,10 +4,10 @@
             <h1>was<span>geit</span></h1>
             <ul role="menubar">
                 <li>
-                    <router-link to="/agenda" role="menuitem">Agenda</router-link>
+                    <router-link class="button" to="/agenda" role="menuitem">Agenda</router-link>
                 </li>
                 <li>
-                    <router-link to="/news" role="menuitem">News</router-link>
+                    <router-link class="button" to="/news" role="menuitem">News</router-link>
                 </li>
             </ul>
             <p class="force-reload-banner" v-bind:hidden="isForceReloadBannerHidden()">
