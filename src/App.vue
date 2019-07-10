@@ -15,13 +15,17 @@
                     aktualisieren.</a>
             </p>
         </div>
-        <router-view/>
-        <small>Built from <a v-bind:href="url">{{ commit() }} at {{ time() }}</a></small>
+        <div class="content">
+            <router-view/>
+        </div>
+        <div class="footer">
+            <small>Built from <a v-bind:href="url">{{ commit() }} at {{ time() }}</a></small>
+        </div>
     </div>
 </template>
 
 <script lang="ts">
-    import {Component, Prop, Vue} from 'vue-property-decorator'
+    import {Component, Vue} from 'vue-property-decorator'
     import {buildInfo} from './shared/build-info'
 
     @Component({
