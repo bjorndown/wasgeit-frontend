@@ -1,5 +1,5 @@
 import * as React from "react";
-import {HashRouter as Router, Link, Redirect, Route, Switch} from "react-router-dom";
+import {BrowserRouter as Router, NavLink, Redirect, Route, Switch} from "react-router-dom";
 import {AgendaContainer} from "./agenda";
 import {NewsComponent} from "./news";
 import {buildInfo} from "../shared/build-info";
