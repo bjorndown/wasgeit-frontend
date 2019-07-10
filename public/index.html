@@ -5,11 +5,123 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>wasgeit-vue</title>
+    <title>wasgeit.ch</title>
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";;
+        border-top: thick solid #17a2b8;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: left;
+        background-color: #fff;
+        margin: 0;
+      }
+
+      .container {
+        width: 100%;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+
+      a {
+        text-decoration: none;
+        color: #000;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      .header h1 {
+        margin-top: 5px;
+        color: #17a2b8;
+        font-weight: normal;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: .3em;
+      }
+
+      h3 {
+        font-size: 1.7em;
+      }
+
+      .header span {
+        color: #777;
+      }
+
+      .header ul, h1 {
+        display: inline-flex;
+      }
+
+      .header ul {
+        margin-left: .5em;
+      }
+
+      .header ul li {
+        margin-left: .5em;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .content li {
+        margin-bottom: .2em;
+      }
+
+      .venue-badge {
+        color: #fff;
+        background: #17a2b8;
+        display: inline-block;
+        padding: .25em .4em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: .25rem;
+      }
+
+      input {
+        width: 100%;
+        max-width: 500px;
+        padding: .375rem .75rem;
+        border-radius: .25rem;
+        border: 1px solid #CCC;
+        font-family: inherit;
+        font-size: inherit;
+      }
+
+      .force-reload-banner {
+        border: medium solid #56b4ff;
+        background: #b9dcf8;
+        padding: .3em;
+      }
+
+      /*
+          Use box-model, otherwise 'width: 100%' is wider than viewport.
+          https://stackoverflow.com/questions/19958666/div-with-width-100-style-actually-wider-than-page#19958717
+      */
+      *, *:before, *:after {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+    </style>
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but wasgeit-vue doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>We're sorry but wasgeit doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
     <div id="app"></div>
     <!-- built files will be auto injected -->
