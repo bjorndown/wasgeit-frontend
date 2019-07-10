@@ -2,12 +2,12 @@
     <div id="app" class="container">
         <div class="header">
             <h1>was<span>geit</span></h1>
-            <ul role="menu">
+            <ul role="menubar">
                 <li>
-                    <router-link to="/agenda">Agenda</router-link>
+                    <router-link to="/agenda" role="menuitem">Agenda</router-link>
                 </li>
                 <li>
-                    <router-link to="/news">News</router-link>
+                    <router-link to="/news" role="menuitem">News</router-link>
                 </li>
             </ul>
             <p class="force-reload-banner" v-bind:hidden="isForceReloadBannerHidden()">
