@@ -3,6 +3,16 @@
   "name": "wasgeit",
   "icons": [
     {
+      "src": "img/icons/icon-16.png",
+      "type": "image/png",
+      "sizes": "16x16"
+    },
+    {
+      "src": "img/icons/icon-32.png",
+      "type": "image/png",
+      "sizes": "32x32"
+    },
+    {
       "src": "img/icons/icon-48.png",
       "type": "image/png",
       "sizes": "48x48"
@@ -11,11 +21,6 @@
       "src": "img/icons/icon-96.png",
       "type": "image/png",
       "sizes": "96x96"
-    },
-    {
-      "src": "img/icons/apple-touch-icon-120x120.png",
-      "type": "image/png",
-      "sizes": "120x120"
     },
     {
       "src": "img/icons/apple-touch-icon.png",
@@ -31,6 +36,11 @@
       "src": "img/icons/icon-192.png",
       "type": "image/png",
       "sizes": "192x192"
+    },
+    {
+      "src": "img/icons/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
     }
   ],
   "theme_color": "#17a2b8",
