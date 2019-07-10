@@ -21,6 +21,10 @@ module.exports = {
     pwa: {
         name: 'wasgeit',
         theme_color: '#17a2b8',
+        orientation: 'portrait',
+        iconPaths: {
+            appleTouchIcon: 'img/icons/apple-touch-icon.png'
+        },
         workboxOptions: {
             navigateFallback: '/index.html'
         }
