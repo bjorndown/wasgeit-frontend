@@ -3,6 +3,7 @@ const {execSync} = require('child_process')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const currentCommit = execSync('git rev-list --max-count=1 HEAD').toString().trim()
+const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
 const VERSION = {
     WASGEIT_BUILD_COMMIT: currentCommit,
@@ -22,9 +23,6 @@ module.exports = {
         name: 'wasgeit',
         theme_color: '#17a2b8',
         orientation: 'portrait',
-        iconPaths: {
-            appleTouchIcon: 'img/icons/apple-touch-icon.png'
-        },
         manifestOptions: {
             "icons": [
                 {
@@ -89,7 +87,8 @@ module.exports = {
                     }
                 }
             ]),
-            new webpack.DefinePlugin(stringifyValues(VERSION))
+            new webpack.DefinePlugin(stringifyValues(VERSION)),
+            new CleanWebpackPlugin()
         ]
     }
 }
