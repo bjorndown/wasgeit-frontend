@@ -25,6 +25,40 @@ module.exports = {
         iconPaths: {
             appleTouchIcon: 'img/icons/apple-touch-icon.png'
         },
+        manifestOptions: {
+            "icons": [
+                {
+                    "src": "img/icons/icon-48.png",
+                    "type": "image/png",
+                    "sizes": "48x48"
+                },
+                {
+                    "src": "img/icons/icon-96.png",
+                    "type": "image/png",
+                    "sizes": "96x96"
+                },
+                {
+                    "src": "img/icons/apple-touch-icon-120x120.png",
+                    "type": "image/png",
+                    "sizes": "120x120"
+                },
+                {
+                    "src": "img/icons/apple-touch-icon.png",
+                    "type": "image/png",
+                    "sizes": "128x128"
+                },
+                {
+                    "src": "img/icons/icon-144.png",
+                    "type": "image/png",
+                    "sizes": "144x144"
+                },
+                {
+                    "src": "img/icons/icon-192.png",
+                    "type": "image/png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
         workboxOptions: {
             navigateFallback: '/index.html'
         }
