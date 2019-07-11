@@ -9,13 +9,13 @@
             <option v-for="venue in venues">{{ venue.Name }}</option>
         </datalist>
         <div class="search-mode-control">
-            <input id="search-mode-title" type="radio" value="title" v-model="searchMode">
+            <input id="search-mode-title" type="radio" value="title" v-model="searchMode" @change="resetSearchStr()">
             <label for="search-mode-title">Titel</label>
 
-            <input id="search-mode-date" type="radio" value="date" v-model="searchMode">
+            <input id="search-mode-date" type="radio" value="date" v-model="searchMode" @change="resetSearchStr()">
             <label for="search-mode-date">Datum</label>
 
-            <input id="search-mode-venue" type="radio" value="venue" v-model="searchMode">
+            <input id="search-mode-venue" type="radio" value="venue" v-model="searchMode" @change="resetSearchStr()">
             <label for="search-mode-venue">Lokal</label>
         </div>
         <ul>
@@ -85,11 +85,8 @@
             console.debug(`start: ${sliceStart}, end: ${sliceEnd}, all: ${this.days.length}`)
         }
 
-        // TODO FIXME wtf
-        public beforeRouteUpdate(to: Route, from: Route, next: any) {
-            console.debug('beforeRouteUpdate')
-            this.updateAgenda()
-            next()
+        public resetSearchStr(): void {
+            this.searchStr = ''
         }
 
         public hasAutoComplete(): string | null {
