@@ -54,10 +54,10 @@ export class WasGeit extends React.Component<Props, State> {
                         <h1>was<span>geit</span></h1>
                         <ul role={'navigation'}>
                             <li>
-                                <Link to="/agenda">Agenda</Link>
+                                <NavLink to="/agenda">Agenda</NavLink>
                             </li>
                             <li>
-                                <Link to="/news">News</Link>
+                                <NavLink to="/news">News</NavLink>
                             </li>
                         </ul>
                         <p className={'force-reload-banner'} hidden={this.isForceReloadBannerHidden()}>
