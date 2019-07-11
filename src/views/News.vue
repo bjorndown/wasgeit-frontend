@@ -7,7 +7,7 @@
 
         <ul>
           <li v-for="ev in news[day]">
-            <a v-bind:href="ev.venue.URL" class="venue-badge">{{ formatDate(ev.datetime) }}</a>
+            <span class="venue-badge">{{ formatDate(ev.datetime) }}</span>
             <a v-bind:href="ev.url">{{ ev.title }}</a>
           </li>
         </ul>

@@ -15,10 +15,10 @@
         </ul>
         <ul class="pager">
             <li v-if="hasPreviousPage()">
-                <router-link class="button" v-bind:to="previousPage()">zrügg</router-link>
+                <router-link aria-label="previous page" class="button" v-bind:to="previousPage()">&#11207;</router-link>
             </li>
             <li v-if="hasNextPage()">
-                <router-link class="button" v-bind:to="nextPage()">füre</router-link>
+                <router-link aria-label="next page" class="button" v-bind:to="nextPage()">&#11208;</router-link>
             </li>
         </ul>
     </div>
@@ -76,12 +76,16 @@
             return this.page() * this.daysPerPage <= this.days.length
         }
 
+        public goToPage(pageNumber: number) {
+            return {name: 'agenda', params: {page: pageNumber}}
+        }
+
         public nextPage() {
-            return {name: 'agenda', params: {page: this.page() + 1}}
+            return this.goToPage(this.page() + 1)
         }
 
         public previousPage() {
-            return {name: 'agenda', params: {page: this.page() - 1}}
+            return this.goToPage(this.page() - 1)
         }
 
         public page(): number {
