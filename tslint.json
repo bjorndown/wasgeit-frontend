@@ -17,6 +17,7 @@
     "no-consecutive-blank-lines": false,
     "trailing-comma": false,
     "semicolon": false,
-    "no-console": false
+    "no-console": false,
+    "only-arrow-functions": false
   }
 }

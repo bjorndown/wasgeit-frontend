@@ -32,7 +32,7 @@ describe('agendaSearchOperator', () => {
 
     describe('filterAgenda()', () => {
         it('must match event title and return all days with only matching event', () => {
-            const filtered = filterAgenda(agenda, 'foo', {}, this.searchMode)
+            const filtered = filterAgenda(agenda, 'foo', 'title')
 
             expect(Object.keys(filtered).length).to.equal(2)
             expect(filtered.hasOwnProperty(jan1)).to.equal(true)
@@ -40,7 +40,7 @@ describe('agendaSearchOperator', () => {
         })
 
         it('must match month name and return all days of that month including all their events', () => {
-            const filtered = filterAgenda(agenda, 'Mar', {}, this.searchMode)
+            const filtered = filterAgenda(agenda, 'Mar', 'date')
 
             expect(Object.keys(filtered).length).to.equal(2)
             expect(filtered.hasOwnProperty(mar1)).to.equal(true)
@@ -49,7 +49,7 @@ describe('agendaSearchOperator', () => {
 
         it('must match date and return just that day including its events', () => {
             // in the browser this would be '2 Feb', but unit tests seem to use a different locale
-            const filtered = filterAgenda(agenda, 'Feb 2', {}, this.searchMode)
+            const filtered = filterAgenda(agenda, 'Feb 2', 'date')
 
             expect(Object.keys(filtered).length).to.equal(1)
             expect(filtered.hasOwnProperty(feb2)).to.equal(true)
@@ -57,12 +57,12 @@ describe('agendaSearchOperator', () => {
 
         it('must return empty agenda if no match', () => {
             const emptyMap = {}
-            expect(filterAgenda(agenda, '13 Feb', {}, this.searchMode)).to.deep.equal(emptyMap)
-            expect(filterAgenda(agenda, 'Nope', {}, this.searchMode)).to.deep.equal(emptyMap)
+            expect(filterAgenda(agenda, '13 Feb', 'date')).to.deep.equal(emptyMap)
+            expect(filterAgenda(agenda, 'Nope', 'title')).to.deep.equal(emptyMap)
         })
 
         it('must return original agenda if search string empty', () => {
-            expect(filterAgenda(agenda, '', {}, this.searchMode)).to.equal(agenda)
+            expect(filterAgenda(agenda, '', 'title')).to.equal(agenda)
         })
     })
 })

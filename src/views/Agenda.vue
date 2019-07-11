@@ -167,8 +167,9 @@
     }
 
     type SearchMode = 'title' | 'date' | 'venue'
+
     const filterFunctions = {
-        'title': function(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
+        title(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
             for (const event of agenda[day]) {
                 if (event.title.toLowerCase().includes(searchStr.toLowerCase())) {
                     if (!filteredAgenda[day]) {
@@ -179,13 +180,13 @@
                 }
             }
         },
-        'date': function(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
+        date(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
             const cleanedDate = normalizeDate(day)
             if (cleanedDate.includes(searchStr.toLowerCase())) {
                 filteredAgenda[day] = agenda[day]
             }
         },
-        'venue': function(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
+        venue(day: string, searchStr: string, agenda: Agenda, filteredAgenda: Agenda) {
             for (const event of agenda[day]) {
                 if (event.venue.Name.toLowerCase().includes(searchStr.toLowerCase())) {
                     console.debug(`${event.venue.Name} does include ${searchStr}`)
@@ -194,7 +195,6 @@
 
                     }
                     filteredAgenda[day].push(event)
-                } else {
                 }
             }
         }
