@@ -15,10 +15,10 @@
         </ul>
         <ul class="pager">
             <li v-if="hasPreviousPage()">
-                <router-link aria-label="previous page" class="button" v-bind:to="previousPage()">&#11207;</router-link>
+                <router-link aria-label="previous page" class="button" v-bind:to="previousPage()">&#9664;</router-link>
             </li>
             <li v-if="hasNextPage()">
-                <router-link aria-label="next page" class="button" v-bind:to="nextPage()">&#11208;</router-link>
+                <router-link aria-label="next page" class="button" v-bind:to="nextPage()">&#9654;</router-link>
             </li>
         </ul>
     </div>
