@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2 hidden aria-hidden="false">Agenda</h2>
-        <input type="text" v-model="searchStr"
+        <input type="search" v-model="searchStr"
                @input="updateAgenda()"
                v-bind:list="hasAutoComplete()"
                aria-label="search for specific events"/>
@@ -9,7 +9,6 @@
             <option v-for="venue in venues">{{ venue.Name }}</option>
         </datalist>
         <div class="search-mode-control">
-            <span>Suchen nach</span>
             <input id="search-mode-title" type="radio" value="title" v-model="searchMode">
             <label for="search-mode-title">Titel</label>
 
