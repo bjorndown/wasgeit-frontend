@@ -1,7 +1,6 @@
 const path = require('path')
 const {execSync} = require('child_process')
 const webpack = require('webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 const currentCommit = execSync('git rev-list --max-count=1 HEAD').toString().trim()
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
 
@@ -78,15 +77,6 @@ module.exports = {
             }
         },
         plugins: [
-            new CopyWebpackPlugin([
-                {
-                    from: 'src/version.json', transform: function (buffer) {
-                        const versionTemplate = JSON.parse(buffer.toString())
-                        Object.assign(versionTemplate, VERSION)
-                        return JSON.stringify(versionTemplate)
-                    }
-                }
-            ]),
             new webpack.DefinePlugin(stringifyValues(VERSION)),
             new CleanWebpackPlugin()
         ]
