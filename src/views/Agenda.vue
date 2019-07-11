@@ -13,6 +13,7 @@
                 </ul>
             </li>
         </ul>
+        <p v-if="noResult()">Sorry, kein Resultat für diesen Suchbegriff.</p>
         <ul class="pager">
             <li v-if="hasPreviousPage()">
                 <router-link aria-label="previous page" class="button" v-bind:to="previousPage()">&#9664;</router-link>
@@ -86,6 +87,10 @@
 
         public previousPage() {
             return this.goToPage(this.page() - 1)
+        }
+
+        public noResult(): boolean {
+            return Object.keys(this.filteredAgenda).length === 0
         }
 
         public page(): number {
