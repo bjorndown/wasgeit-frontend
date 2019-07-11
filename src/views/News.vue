@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="hidden">News</h2>
+    <h2 hidden aria-hidden="false">News</h2>
     <ul>
       <li v-for="day in days">
         <h3>{{ buildTitle(day) }}</h3>
@@ -8,7 +8,6 @@
         <ul>
           <li v-for="ev in news[day]">
             <a v-bind:href="ev.venue.URL" class="venue-badge">{{ formatDate(ev.datetime) }}</a>
-            &nbsp;
             <a v-bind:href="ev.url">{{ ev.title }}</a>
           </li>
         </ul>

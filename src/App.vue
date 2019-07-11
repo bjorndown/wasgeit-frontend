@@ -1,26 +1,28 @@
 <template>
     <div id="app" class="container">
-        <div class="header">
+        <header class="header">
             <h1>was<span>geit</span></h1>
-            <ul role="menubar">
-                <li>
-                    <router-link class="button" to="/agenda" role="menuitem">Agenda</router-link>
-                </li>
-                <li>
-                    <router-link class="button" to="/news" role="menuitem">News</router-link>
-                </li>
-            </ul>
             <p class="force-reload-banner" v-bind:hidden="isForceReloadBannerHidden()">
                 <a v-on:click="forceReload">Deine Version von wasgeit ist veraltet. Tipp hier um sie zu
                     aktualisieren.</a>
             </p>
-        </div>
-        <div class="content">
+        </header>
+        <nav>
+            <ul role="menubar">
+                <li role="menuitem">
+                    <router-link class="button" to="/agenda">Agenda</router-link>
+                </li>
+                <li role="menuitem">
+                    <router-link class="button" to="/news">News</router-link>
+                </li>
+            </ul>
+        </nav>
+        <main class="content">
             <router-view/>
-        </div>
-        <div class="footer">
-            <small>Built from <a v-bind:href="url">{{ commit() }} at {{ time() }}</a></small>
-        </div>
+        </main>
+        <footer class="footer">
+            <small>Built from <a v-bind:href="url()">{{ commit() }} at {{ time() }}</a></small>
+        </footer>
     </div>
 </template>
 
@@ -28,9 +30,7 @@
     import {Component, Vue} from 'vue-property-decorator'
     import {buildInfo} from './shared/build-info'
 
-    @Component({
-        components: {}
-    })
+    @Component({})
     export default class App extends Vue {
         public showForceReloadButton: boolean = false
 

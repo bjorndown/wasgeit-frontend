@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import News from './views/News.vue'
 import NotFound from './views/NotFound.vue'
-import AgendaView from '@/views/Agenda.vue'
+import AgendaView from './views/Agenda.vue'
 
 Vue.use(Router)
 

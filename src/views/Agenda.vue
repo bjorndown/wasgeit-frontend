@@ -1,6 +1,7 @@
 <template>
     <div>
-        <input type='text' v-model="searchStr" @input="updateAgenda()"/>
+        <h2 hidden aria-hidden="false">Agenda</h2>
+        <input type='text' v-model="searchStr" @input="updateAgenda()" aria-label="search for specific events"/>
         <ul>
             <li v-for="day in pagedDays">
                 <h3>{{ formatDate(day) }}</h3>
@@ -33,7 +34,7 @@
     @Component({
             // TODO FIXME wtf
             watch: {
-                '$route'(to: Route, from: Route) {
+                $route(to: Route, from: Route) {
                     (this as any).updateAgenda()
                 }
             }
@@ -57,7 +58,8 @@
         }
 
         // TODO FIXME wtf
-        beforeRouteUpdate(to: Route, from: Route, next: any) {
+        public beforeRouteUpdate(to: Route, from: Route, next: any) {
+            console.debug('beforeRouteUpdate')
             this.updateAgenda()
             next()
         }
@@ -83,7 +85,12 @@
         }
 
         public page(): number {
-            return parseInt(this.$attrs.page, 10)
+            const parsed = parseInt(this.$attrs.page, 10)
+            if (isNaN(parsed)) {
+                console.error(`${this.$attrs.page} is not a number`)
+                return 1
+            }
+            return parsed
         }
 
         public mounted() {
