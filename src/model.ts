@@ -17,5 +17,6 @@ export interface News { [prop: string]: Event[] }
 
 export interface Venue {
     readonly Name: string
+    readonly ShortName: string
     readonly URL: string
 }
