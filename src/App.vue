@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="container">
         <header class="header">
-            <h1>was<span>geit</span></h1>
+            <h1>was<br><span>geit</span></h1>
         </header>
         <nav>
             <ul role="menubar">
@@ -9,7 +9,10 @@
                     <router-link class="button" to="/agenda">Agenda</router-link>
                 </li>
                 <li role="menuitem">
-                    <router-link class="button" to="/news">News</router-link>
+                    <router-link class="button" to="/news">Nöis</router-link>
+                </li>
+                <li role="menuitem">
+                    <router-link class="button" to="/what-else">Was no?</router-link>
                 </li>
             </ul>
         </nav>

@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import News from './views/News.vue'
+import NewsView from './views/News.vue'
 import NotFound from './views/NotFound.vue'
 import AgendaView from './views/Agenda.vue'
+import WhatElseView from '@/views/Festival.vue'
 
 Vue.use(Router)
 
@@ -19,7 +20,12 @@ export default new Router({
         {
             path: '/news',
             name: 'news',
-            component: News,
+            component: NewsView,
+            props: true
+        },        {
+            path: '/what-else',
+            name: 'festivals',
+            component: WhatElseView,
             props: true
         },
         {path: '/', redirect: '/agenda'},

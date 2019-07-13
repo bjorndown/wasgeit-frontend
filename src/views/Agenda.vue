@@ -81,8 +81,6 @@
             const sliceEnd = this.page() * this.daysPerPage
             this.days = Object.keys(this.filteredAgenda)
             this.pagedDays = this.days.slice(sliceStart, sliceEnd)
-
-            console.debug(`start: ${sliceStart}, end: ${sliceEnd}, all: ${this.days.length}`)
         }
 
         public resetSearchStr(): void {
@@ -148,7 +146,6 @@
                     venues[ev.venue.ShortName] = ev.venue
                 }
             }
-            console.debug(venues)
             return venues
         }
 

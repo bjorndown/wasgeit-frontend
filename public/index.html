@@ -27,8 +27,8 @@
 
       .container {
         width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 10px;
+        padding-left: 10px;
         margin-right: auto;
         margin-left: auto;
       }
@@ -50,8 +50,17 @@
         margin: 0 .4em 0 0;
       }
 
+      footer a {
+        padding: .1em;
+      }
+
       .hidden {
         display: none;
+      }
+
+      .what-else-details {
+        background: #EEE;
+        padding: 0 .3em 0 .3em;
       }
 
       header h1 {
@@ -68,7 +77,7 @@
       }
 
       h3 {
-        font-size: 1.7em;
+        font-size: 1.45em;
       }
 
       .router-link-active {
@@ -79,21 +88,30 @@
         color: #777;
       }
 
-      header h1, header, nav, nav ul, ul.pager {
-        display: inline-flex;
+      header, nav {
+        display: inline-block;
+      }
+
+      nav {
+        position: relative;
+        top: -0.5em;
       }
 
       nav ul {
-        margin-left: .5em;
+        margin-left: .6em;
+        display: inline-block;
       }
 
       nav ul li {
-        margin-left: .5em;
+        display: inline-block;
       }
 
       ul.pager {
         margin: 1em 0 0 0;
-        padding: 0;
+      }
+
+      ul.pager li {
+        display: inline-block;
       }
 
       ul {
@@ -102,7 +120,7 @@
       }
 
       .content li {
-        margin-bottom: .2em;
+        margin-bottom: .4em;
       }
 
       footer {
@@ -113,7 +131,7 @@
         color: #fff;
         background: #138194;
         display: inline-block;
-        padding: .4em .5em;
+        padding: .3em;
         font-size: 85%;
         font-weight: 700;
         line-height: 1;

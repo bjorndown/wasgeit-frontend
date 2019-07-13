@@ -19,10 +19,11 @@
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
   import {formatDate} from '@/shared/formatted-date'
+  import {News} from '@/model'
 
   @Component({})
-  export default class News extends Vue {
-    public news: {} = {}
+  export default class NewsView extends Vue {
+    public news: News = {}
     public days: string[] = []
 
     public formatDate(date: string): string {
